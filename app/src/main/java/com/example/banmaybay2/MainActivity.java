@@ -1,5 +1,6 @@
 package com.example.banmaybay2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -28,35 +29,36 @@ public class MainActivity extends AppCompatActivity {
         initBottomNavigation();
     }
 
-//    private void initBottomNavigation() {
-//        mainFragment = MainFragment.newInstance();
-//        imageUploadListener = mainFragment;
-//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main, mainFragment).commit();
-//        binding.bnMain.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                int id = menuItem.getItemId();
-//                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                if (R.id.nav_upgrade == id) {
-//                    fragmentTransaction
-//                            .replace(R.id.fragment_container, ManageCategoryFragment.newInstance())
-//                            .commit();
-//                }
-//                if (R.id.nav_store == id) {
-//                    fragmentTransaction
-//                            .replace(R.id.fragment_container, AccountFragment.newInstance())
-//                            .commit();
-//                }
-//                if (R.id.nav_play == id) {
-//                    fragmentTransaction
-//                            .replace(R.id.fragment_container, AccountFragment.newInstance())
-//                            .commit();
-//                }
-//
-//                return true;
-//            }
-//
-//        });
-//    }
+    private void initBottomNavigation() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, StoreFragment.newInstance()).commit();
+        binding.bnMain.setSelectedItemId(R.id.nav_play);
+        binding.bnMain.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                if (R.id.nav_upgrade == id) {
+                    fragmentTransaction
+                            .replace(R.id.fragment_container, StoreFragment.newInstance())
+                            .commit();
+                }
+                if (R.id.nav_store == id) {
+                    fragmentTransaction
+                            .replace(R.id.fragment_container, UpgradeFragment.newInstance())
+                            .commit();
+                }
+                if (R.id.nav_play == id) {
+                }
+
+                return true;
+            }
+
+        });
+
+        binding.fabPlay.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, PlayActivity.class);
+            startActivity(intent);
+        });
+    }
 
 }
