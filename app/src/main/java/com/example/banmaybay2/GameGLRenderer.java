@@ -49,9 +49,9 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
 
         playerPlane = new Plane(shaderProgram);  // Truyền shaderProgram vào Plane
 
-        for (int i = 0; i < 5; i++) {  // Example: 5 enemy planes
-            EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 3);
-            enemyPlane.setPosition(0.1f * i, 0.8f);
+        for (int i = 0; i < 9; i++) {  // Example: 5 enemy planes
+            EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 13);
+            enemyPlane.setPosition(-0.9f + 0.2f * i, 0.8f);
             enemyPlanes.add(enemyPlane);
         }
 

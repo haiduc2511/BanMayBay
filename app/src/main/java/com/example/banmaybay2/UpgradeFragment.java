@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class UpgradeFragment extends Fragment {
+    SharedPrefManager sharedPrefManager;
 
 
     public UpgradeFragment() {
@@ -27,6 +28,7 @@ public class UpgradeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+        sharedPrefManager = new SharedPrefManager(requireContext());
     }
 
     @Override
