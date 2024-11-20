@@ -22,12 +22,15 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
     private long lastBulletTime = 0;
     private Context context;
     SharedPrefManager sharedPrefManager;
-    int bulletPerShot = 0;
-    int enemyPlaneHealth = 0;
-    int bulletSpeed = 0;
-    int enemyPlaneSpeed = 0;
-    public GameGLRenderer(Context context) {
+    int bulletPerShot = 1;
+    int enemyPlaneHealth = 1;
+    int bulletSpeed = 1;
+    int enemyPlaneSpeed = 1;
+    int level = 1;
+
+    public GameGLRenderer(Context context, int level) {
         this.context = context;
+        this.level = level;
         sharedPrefManager = new SharedPrefManager(context);
         bulletPerShot = Integer.parseInt(sharedPrefManager.getBulletsPerShot());
         enemyPlaneHealth = Integer.parseInt(sharedPrefManager.getMyPlaneHealth());
@@ -41,7 +44,7 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         planeY = y;
     }
     public void shootBullet() {
-        Bullet bullet = new Bullet(shaderProgram, planeX, planeY + 0.2f); // Create a bullet at the plane's position
+        Bullet bullet = new Bullet(shaderProgram, planeX, planeY + 0.1f * bulletSpeed); // Create a bullet at the plane's position
         bullets.add(bullet);
     }
 
@@ -66,9 +69,9 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         playerPlane = new Plane(shaderProgram);  // Truyền shaderProgram vào Plane
 
         for (int i = 0; i < 9; i++) {  // Example: 5 enemy planes
-            for (int j = 0; j < 20; j++) {
-                EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 10);
-                enemyPlane.setPosition(-0.9f + 0.2f * i, 2 + 0.5f * j);
+            for (int j = 0; j < 10; j++) {
+                EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 3 * level);
+                enemyPlane.setPosition(-0.9f + 0.2f * j, 2 + 0.5f * i);
                 enemyPlanes.add(enemyPlane);
             }
         }
@@ -88,9 +91,9 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         // Check if it's time to shoot a bullet
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastBulletTime >= 100) { // 1 second interval
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < bulletPerShot; i++) {
                 bullets.add(new Bullet(shaderProgram
-                        , planeX - 0.1f + 0.05f * i, planeY));
+                        , planeX - 0.05f * bulletPerShot / 2 + 0.05f * i, planeY));
                 lastBulletTime = currentTime;
             }
         }
