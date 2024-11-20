@@ -10,25 +10,15 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GameGLSurfaceView glSurfaceView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Tạo một GameGLSurfaceView và sử dụng nó như nội dung chính
-        glSurfaceView = new GameGLSurfaceView(this);
-        setContentView(glSurfaceView);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_play);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        glSurfaceView.onPause();  // Tạm dừng render khi activity bị tạm dừng
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        glSurfaceView.onResume();  // Tiếp tục render khi activity trở lại
-    }}
+}
