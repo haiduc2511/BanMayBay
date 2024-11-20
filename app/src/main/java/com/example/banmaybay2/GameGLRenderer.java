@@ -50,7 +50,7 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         playerPlane = new Plane(shaderProgram);  // Truyền shaderProgram vào Plane
 
         for (int i = 0; i < 5; i++) {  // Example: 5 enemy planes
-            EnemyPlane enemyPlane = new EnemyPlane(shaderProgram);
+            EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 3);
             enemyPlane.setPosition(0.1f * i, 0.8f);
             enemyPlanes.add(enemyPlane);
         }
@@ -69,7 +69,7 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
 
         // Check if it's time to shoot a bullet
         long currentTime = System.currentTimeMillis();
-        if (currentTime - lastBulletTime >= 100) { // 1 second interval
+        if (currentTime - lastBulletTime >= 1000) { // 1 second interval
             bullets.add(new Bullet(shaderProgram, planeX, planeY));
             lastBulletTime = currentTime;
         }
@@ -93,13 +93,25 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
             if (bullet.isOffScreen()) {
                 bullets.remove(i); // Remove bullet if it's off-screen
             } else {
+                for (EnemyPlane enemyPlane : enemyPlanes) {
+                    if (bullet.collidesWith(enemyPlane)) {
+                        bullets.remove(i);
+                        enemyPlane.decreaseHealth();
+                    }
+                }
+
                 bullet.draw();
             }
 
         }
 
-        for (EnemyPlane enemyPlane : enemyPlanes) {
-            enemyPlane.draw();
+        for (int i = 0; i < enemyPlanes.size(); i++) {
+            EnemyPlane enemyPlane = enemyPlanes.get(i);
+            if (enemyPlane.getHealth() < 0) {
+                enemyPlanes.remove(enemyPlane);
+            } else {
+                enemyPlane.draw();
+            }
         }
     }
 

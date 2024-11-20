@@ -9,6 +9,7 @@ import java.nio.FloatBuffer;
 public class EnemyPlane {
     private FloatBuffer vertexBuffer;
     private int shaderProgram;
+    private int health = 3;
     private float posX, posY;
 
     private static final float[] VERTEX_COORDS = {
@@ -22,13 +23,25 @@ public class EnemyPlane {
 
     private float[] color = {1.0f, 0.0f, 0.0f, 1.0f};
 
-    public EnemyPlane(int shaderProgram) {
+    public EnemyPlane(int shaderProgram, int health) {
+        this.health = health;
         this.shaderProgram = shaderProgram;
         ByteBuffer bb = ByteBuffer.allocateDirect(VERTEX_COORDS.length * 4);
         bb.order(ByteOrder.nativeOrder());
         vertexBuffer = bb.asFloatBuffer();
         vertexBuffer.put(VERTEX_COORDS);
         vertexBuffer.position(0);
+    }
+    public void decreaseHealth() {
+        this.health--;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public void setPosition(float x, float y) {
