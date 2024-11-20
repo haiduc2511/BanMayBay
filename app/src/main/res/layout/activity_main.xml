@@ -5,55 +5,23 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/background_play">
+    tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/game_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="32dp"
-        android:gravity="center"
-        android:padding="20dp"
-        android:shadowColor="#80000000"
-        android:shadowDx="3"
-        android:shadowDy="3"
-        android:shadowRadius="10"
-        android:fontFamily="@font/rubikdirt_regular"
-        android:text="Haiduc's Planet Envaders"
-        android:textColor="#00BFFF"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_play"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <Button
-        android:id="@+id/bt_play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/button_gradient"
-        android:text="Play game!"
-        app:backgroundTint="@null"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bn_main"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:background="@color/gray"
+        app:itemIconTint="@color/white"
+        app:itemPaddingBottom="0dp"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@menu/bottom_menu" />
 
-    <Button
-        android:id="@+id/bt_retrieve_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/button_gradient"
-        android:text="Retrieve progress"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_play" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
