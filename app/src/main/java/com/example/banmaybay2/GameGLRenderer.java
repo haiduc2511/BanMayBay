@@ -1,5 +1,6 @@
 package com.example.banmaybay2;
 
+import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.widget.Button;
@@ -19,6 +20,19 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
     private float planeY = 0.0f;
     private List<EnemyPlane> enemyPlanes = new ArrayList<>(); // List for enemy planes
     private long lastBulletTime = 0;
+    private Context context;
+    SharedPrefManager sharedPrefManager;
+    int bulletPerShot = 0;
+    int enemyPlaneHealth = 0;
+    int bulletSpeed = 0;
+    public GameGLRenderer(Context context) {
+        this.context = context;
+        sharedPrefManager = new SharedPrefManager(context);
+        bulletPerShot = Integer.parseInt(sharedPrefManager.getBulletsPerShot());
+        enemyPlaneHealth = Integer.parseInt(sharedPrefManager.getMyPlaneHealth());
+        bulletSpeed = Integer.parseInt(sharedPrefManager.getBulletSpeed());
+    }
+
 
     public void setPlanePosition(float x, float y) {
         planeX = x;
@@ -51,7 +65,7 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
 
         for (int i = 0; i < 9; i++) {  // Example: 5 enemy planes
             for (int j = 0; j < 20; j++) {
-                EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 13);
+                EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 10);
                 enemyPlane.setPosition(-0.9f + 0.2f * i, 2 + 0.5f * j);
                 enemyPlanes.add(enemyPlane);
             }

@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    implementation ("org.rajawali3d:rajawali:1.0.325@aar")
+
 
     implementation(libs.appcompat)
     implementation(libs.material)

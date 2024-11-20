@@ -15,7 +15,7 @@ public class GameGLSurfaceView extends GLSurfaceView {
         setEGLContextClientVersion(2);
 
         // Khởi tạo renderer và gán vào GLSurfaceView
-        renderer = new GameGLRenderer();
+        renderer = new GameGLRenderer(context);
         setRenderer(renderer);
 
         // Chế độ render khi có thay đổi (hoặc set to CONTINUOUSLY để vẽ liên tục)

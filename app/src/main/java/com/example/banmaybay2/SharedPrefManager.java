@@ -60,6 +60,17 @@ public class SharedPrefManager {
         return this.getData("Enemy plane health");
     }
 
+    public void saveEnemyPlaneSpeed(String enemyPlaneSpeed) {
+        this.saveData("Enemy plane Speed", enemyPlaneSpeed);
+    }
+
+    public String getEnemyPlaneSpeed() {
+        if (!contains("Enemy plane Speed")) {
+            return "6"; // Default value
+        }
+        return this.getData("Enemy plane Speed");
+    }
+
     public void saveBulletSpeed(String bulletSpeed) {
         this.saveData("Bullet speed", bulletSpeed);
     }
