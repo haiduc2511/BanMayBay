@@ -28,24 +28,24 @@ public class Plane {
         // Define the 2D plane geometry (fuselage, wings, tail)
         vertexCoords = new float[] {
                 // Fuselage (center body)
-                0.0f,  0.2f, 0.0f,  // Top of fuselage
+                0.0f,  0.05f, 0.0f,  // Top of fuselage
                 -0.1f, -0.2f, 0.0f,  // Bottom left of fuselage
                 0.1f, -0.2f, 0.0f,  // Bottom right of fuselage
 
                 // Left wing
-                -0.1f, -0.1f, 0.0f,  // Top left wing
-                -0.3f, -0.3f, 0.0f,  // Bottom left wing
-                0.0f,  -0.3f, 0.0f,  // Bottom center wing
+                -0.06f, -0.18f, 0.0f,  // Top left wing
+                -0.09f, -0.263f, 0.0f,  // Bottom left wing
+                -0.03f,  -0.263f, 0.0f,  // Bottom center wing
 
                 // Right wing
-                0.1f, -0.1f, 0.0f,  // Top right wing
-                0.3f, -0.3f, 0.0f,  // Bottom right wing
-                0.0f, -0.3f, 0.0f,  // Bottom center wing
+                0.052f, -0.184f, 0.0f,  // Top right wing
+                0.0195f, -0.259f, 0.0f,  // Bottom right wing
+                0.0846f, -0.2599f, 0.0f,  // Bottom center wing
 
                 // Tail
-                0.0f,  0.1f, 0.0f,  // Center of tail
-                -0.05f,  0.2f, 0.0f, // Top left tail
-                0.05f,  0.2f, 0.0f  // Top right tail
+                0.0f,  -0.15f, 0.0f,  // Center of tail
+                -0.15f,  -0.05f, 0.0f, // Top left tail
+                0.15f,  -0.05f, 0.0f  // Top right tail
         };
 
         setupVertexBuffer();

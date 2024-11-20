@@ -25,7 +25,7 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         planeY = y;
     }
     public void shootBullet() {
-        Bullet bullet = new Bullet(shaderProgram, planeX, planeY + 0.1f); // Create a bullet at the plane's position
+        Bullet bullet = new Bullet(shaderProgram, planeX, planeY + 0.2f); // Create a bullet at the plane's position
         bullets.add(bullet);
     }
 
@@ -50,9 +50,11 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         playerPlane = new Plane(shaderProgram);  // Truyền shaderProgram vào Plane
 
         for (int i = 0; i < 9; i++) {  // Example: 5 enemy planes
-            EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 13);
-            enemyPlane.setPosition(-0.9f + 0.2f * i, 0.8f);
-            enemyPlanes.add(enemyPlane);
+            for (int j = 0; j < 20; j++) {
+                EnemyPlane enemyPlane = new EnemyPlane(shaderProgram, 13);
+                enemyPlane.setPosition(-0.9f + 0.2f * i, 2 + 0.5f * j);
+                enemyPlanes.add(enemyPlane);
+            }
         }
 
     }
