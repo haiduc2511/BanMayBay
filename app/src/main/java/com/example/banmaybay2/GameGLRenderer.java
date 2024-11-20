@@ -25,12 +25,14 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
     int bulletPerShot = 0;
     int enemyPlaneHealth = 0;
     int bulletSpeed = 0;
+    int enemyPlaneSpeed = 0;
     public GameGLRenderer(Context context) {
         this.context = context;
         sharedPrefManager = new SharedPrefManager(context);
         bulletPerShot = Integer.parseInt(sharedPrefManager.getBulletsPerShot());
         enemyPlaneHealth = Integer.parseInt(sharedPrefManager.getMyPlaneHealth());
         bulletSpeed = Integer.parseInt(sharedPrefManager.getBulletSpeed());
+        enemyPlaneSpeed = Integer.parseInt(sharedPrefManager.getEnemyPlaneSpeed());
     }
 
 
