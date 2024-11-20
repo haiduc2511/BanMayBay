@@ -36,6 +36,9 @@ public class EnemyPlane {
         this.health--;
     }
 
+    public void updatePosition() {
+        posY -= 0.01f;
+    }
     public int getHealth() {
         return health;
     }

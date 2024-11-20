@@ -70,8 +70,11 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         // Check if it's time to shoot a bullet
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastBulletTime >= 100) { // 1 second interval
-            bullets.add(new Bullet(shaderProgram, planeX, planeY));
-            lastBulletTime = currentTime;
+            for (int i = 0; i < 5; i++) {
+                bullets.add(new Bullet(shaderProgram
+                        , planeX - 0.1f + 0.05f * i, planeY));
+                lastBulletTime = currentTime;
+            }
         }
 
         // Update and draw bullets
@@ -108,6 +111,7 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
 
         for (int i = 0; i < enemyPlanes.size(); i++) {
             EnemyPlane enemyPlane = enemyPlanes.get(i);
+            enemyPlane.updatePosition();
             if (enemyPlane.getHealth() < 0) {
                 enemyPlanes.remove(enemyPlane);
             } else {
