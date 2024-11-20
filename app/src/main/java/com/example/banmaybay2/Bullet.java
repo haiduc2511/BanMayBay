@@ -37,7 +37,7 @@ public class Bullet {
     }
 
     public void updatePosition() {
-        bulletY += 0.01f;
+        bulletY += 0.08f;
     }
 
     public boolean isOffScreen() {
