@@ -26,116 +26,59 @@ public class SharedPrefManager {
         return sharedPreferences.contains(key);
     }
 
-    public void saveNumberOfImages(String numberOfImage) {
-        this.saveData("Number of images", numberOfImage);
+
+    public void saveBulletsPerShot(String bulletsPerShot) {
+        this.saveData("Bullets per shot", bulletsPerShot);
     }
 
-    public void saveCompressPercentage(String compressPercentage) {
-        this.saveData("Compress percentage", compressPercentage);
+    public String getBulletsPerShot() {
+        if (!contains("Bullets per shot")) {
+            return "1"; // Default value
+        }
+        return this.getData("Bullets per shot");
     }
 
-    public void saveNumberOfColumn(String numberOfColumn) {
-        this.saveData("Number of columns", numberOfColumn);
-    }
-    public String getNumberOfImages() {
-        if (!contains("Number of images")) {
-            return "50";
-        }
-        return this.getData("Number of images");
+    public void saveMyPlaneHealth(String myPlaneHealth) {
+        this.saveData("My plane health", myPlaneHealth);
     }
 
-    public String getCompressPercentage() {
-        if (!contains("Compress percentage")) {
-            return "99";
+    public String getMyPlaneHealth() {
+        if (!contains("My plane health")) {
+            return "4"; // Default value
         }
-        return this.getData("Compress percentage");
+        return this.getData("My plane health");
     }
 
-    public String getNumberOfColumn() {
-        if (!contains("Number of columns")) {
-            return "3";
-        }
-        return this.getData("Number of columns");
+    public void saveEnemyPlaneHealth(String enemyPlaneHealth) {
+        this.saveData("Enemy plane health", enemyPlaneHealth);
     }
 
-    public String getPowerMode() {
-        if (!contains("Power mode")) {
-            return "high";
+    public String getEnemyPlaneHealth() {
+        if (!contains("Enemy plane health")) {
+            return "6"; // Default value
         }
-        return this.getData("Power mode");
-    }
-    public void savePowerMode(String powerMode) {
-        this.saveData("Power mode", powerMode);
-        if (powerMode.equals("low")) {
-            saveNumberOfImages("10");
-            saveFetchQuality("200");
-        }
-        if (powerMode.equals("medium")) {
-            saveNumberOfImages("20");
-            saveFetchQuality("250");
-        }
-        if (powerMode.equals("high")) {
-            saveNumberOfImages("30");
-            saveFetchQuality("300");
-        }
-    }
-    public String getFetchQuality() {
-        if (!contains("Fetch Quality")) {
-            return "300";
-        }
-        return this.getData("Fetch Quality");
-    }
-    public void saveFetchQuality(String fetchQuality) {
-        this.saveData("Fetch Quality", fetchQuality);
+        return this.getData("Enemy plane health");
     }
 
-    public String getIfDeleteImageGalleryAfterUpload() {
-        if (!contains("If Delete Image Gallery After Upload")) {
-            return "false";
-        }
-        return this.getData("If Delete Image Gallery After Upload");
-    }
-    public void saveIfDeleteImageGalleryAfterUpload(String ifDeleteImageGalleryAfterUpload) {
-        this.saveData("If Delete Image Gallery After Upload", ifDeleteImageGalleryAfterUpload);
+    public void saveBulletSpeed(String bulletSpeed) {
+        this.saveData("Bullet speed", bulletSpeed);
     }
 
-    public String getIfDoubleCheckAISuggestions() {
-        if (!contains("If Double Check AI's Suggestions")) {
-            return "false";
+    public String getBulletSpeed() {
+        if (!contains("Bullet speed")) {
+            return "10"; // Default value
         }
-        return this.getData("If Double Check AI's Suggestions");
-    }
-    public void saveIfDoubleCheckAISuggestions(String ifDoubleCheckAISuggestions) {
-        this.saveData("If Double Check AI's Suggestions", ifDoubleCheckAISuggestions);
+        return this.getData("Bullet speed");
     }
 
-    public String getIfDeleteImageEasyModeOn() {
-        if (!contains("IfDeleteImageEasyModeOn")) {
-            return "false";
-        }
-        return this.getData("IfDeleteImageEasyModeOn");
-    }
-    public void saveIfDeleteImageEasyModeOn(String ifDeleteImageEasyModeOn) {
-        this.saveData("IfDeleteImageEasyModeOn", ifDeleteImageEasyModeOn);
+    public void saveLevel(String level) {
+        this.saveData("Level", level);
     }
 
-    public String getIfDownloadImageEasyModeOn() {
-        if (!contains("IfDownloadImageEasyModeOn")) {
-            return "false";
+    public String getLevel() {
+        if (!contains("Level")) {
+            return "1"; // Default value
         }
-        return this.getData("IfDownloadImageEasyModeOn");
-    }
-    public void saveIfDownloadImageEasyModeOn(String ifDownloadImageEasyModeOn) {
-        this.saveData("IfDownloadImageEasyModeOn", ifDownloadImageEasyModeOn);
-    }
-
-    public String getIfShareImageEasyModeOn() {
-        if (!contains("ifShareImageEasyModeOn")) {
-            return "false";
-        }
-        return this.getData("ifShareImageEasyModeOn");
-    }
-    public void saveIfShareImageEasyModeOn (String ifShareImageEasyModeOn) {
-        this.saveData("ifShareImageEasyModeOn", ifShareImageEasyModeOn);
+        return this.getData("Level");
     }
 }
