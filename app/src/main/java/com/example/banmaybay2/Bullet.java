@@ -14,7 +14,7 @@ public class Bullet {
     private static final float COLLISION_RADIUS = 0.1f;
 
     private static final float[] VERTEX_COORDS = {
-            0.0f,  0.05f, 0.0f,
+            0.0f,  0.0f, 0.0f,
             -0.02f, -0.05f, 0.0f,
             0.02f, -0.05f, 0.0f
     };
@@ -36,8 +36,8 @@ public class Bullet {
         vertexBuffer.position(0);
     }
 
-    public void updatePosition() {
-        bulletY += 0.08f;
+    public void updatePosition(int bulletSpeed) {
+        bulletY += 0.01f * bulletSpeed;
     }
 
     public boolean isOffScreen() {

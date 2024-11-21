@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initBottomNavigation() {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, StoreFragment.newInstance()).commit();
-        binding.bnMain.setSelectedItemId(R.id.nav_play);
         binding.bnMain.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

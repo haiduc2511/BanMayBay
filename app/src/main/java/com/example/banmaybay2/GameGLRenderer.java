@@ -93,7 +93,7 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         if (currentTime - lastBulletTime >= 100) { // 1 second interval
             for (int i = 0; i < bulletPerShot; i++) {
                 bullets.add(new Bullet(shaderProgram
-                        , planeX - 0.05f * bulletPerShot / 2 + 0.05f * i, planeY));
+                        , planeX - 0.05f * (bulletPerShot / 2) + 0.05f * i, planeY));
                 lastBulletTime = currentTime;
             }
         }
@@ -112,7 +112,7 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
 
         for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
-            bullet.updatePosition();
+            bullet.updatePosition(bulletSpeed);
             bullet.draw();
             if (bullet.isOffScreen()) {
                 bullets.remove(i); // Remove bullet if it's off-screen
