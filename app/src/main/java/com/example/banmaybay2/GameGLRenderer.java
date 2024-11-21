@@ -1,9 +1,11 @@
 package com.example.banmaybay2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -133,12 +135,22 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         for (int i = 0; i < enemyPlanes.size(); i++) {
             EnemyPlane enemyPlane = enemyPlanes.get(i);
             enemyPlane.updatePosition();
+            if (playerPlane.collidesWith(enemyPlane)) {
+                ((Activity) context).runOnUiThread(() -> {
+                    Toast.makeText(context, "đây roiiiiiiiii thua roiiiii", Toast.LENGTH_SHORT).show();
+                });
+            }
+            if (enemyPlane.getPosY() < -1.0f) {
+                enemyPlanes.remove(enemyPlane);
+            }
             if (enemyPlane.getHealth() < 0) {
                 enemyPlanes.remove(enemyPlane);
             } else {
                 enemyPlane.draw();
             }
         }
+
+
     }
 
     @Override

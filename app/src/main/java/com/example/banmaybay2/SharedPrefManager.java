@@ -33,7 +33,7 @@ public class SharedPrefManager {
 
     public String getBulletsPerShot() {
         if (!contains("Bullets per shot")) {
-            return "4"; // Default value
+            return "5"; // Default value
         }
         return this.getData("Bullets per shot");
     }

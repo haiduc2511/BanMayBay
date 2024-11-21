@@ -74,6 +74,13 @@ public class Plane {
 
         setupVertexBuffer(); // Update buffer with new coordinates
     }
+    private static final float COLLISION_RADIUS = 0.1f;
+    public boolean collidesWith(EnemyPlane enemyPlane) {
+        float dx = positionX - enemyPlane.getPosX();
+        float dy = positionY - enemyPlane.getPosY();
+        float distanceSquared = dx * dx + dy * dy;
+        return distanceSquared < COLLISION_RADIUS * COLLISION_RADIUS;
+    }
 
     public void draw() {
         int positionHandle = GLES20.glGetAttribLocation(shaderProgram, "vPosition");

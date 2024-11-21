@@ -14,9 +14,9 @@ public class Bullet {
     private static final float COLLISION_RADIUS = 0.1f;
 
     private static final float[] VERTEX_COORDS = {
-            0.0f,  0.0f, 0.0f,
-            -0.02f, -0.05f, 0.0f,
-            0.02f, -0.05f, 0.0f
+            0.0f,  -0.03f, 0.0f,
+            -0.01f, -0.05f, 0.0f,
+            0.01f, -0.05f, 0.0f
     };
     private static final int COORDS_PER_VERTEX = 3;
     private final int vertexCount = VERTEX_COORDS.length / COORDS_PER_VERTEX;
@@ -56,9 +56,9 @@ public class Bullet {
         GLES20.glEnableVertexAttribArray(positionHandle);
 
         float[] transformedCoords = {
-                bulletX, bulletY + 0.05f, 0.0f,
-                bulletX - 0.02f, bulletY - 0.05f, 0.0f,
-                bulletX + 0.02f, bulletY - 0.05f, 0.0f
+                bulletX, bulletY - 0.04f, 0.0f,
+                bulletX - 0.01f, bulletY - 0.05f, 0.0f,
+                bulletX + 0.01f, bulletY - 0.05f, 0.0f
         };
         vertexBuffer.put(transformedCoords).position(0);
 
