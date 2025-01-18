@@ -31,4 +31,5 @@ public class PlayActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         glSurfaceView.onResume();  // Tiếp tục render khi activity trở lại
-    }}
+    }
+}

@@ -86,11 +86,9 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
         GLES20.glUseProgram(shaderProgram);
 
-        // Draw the player's plane
         playerPlane.setPosition(planeX, planeY);
         playerPlane.draw();
 
-        // Check if it's time to shoot a bullet
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastBulletTime >= 100) { // 1 second interval
             for (int i = 0; i < bulletPerShot; i++) {
@@ -137,7 +135,8 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
             enemyPlane.updatePosition();
             if (playerPlane.collidesWith(enemyPlane)) {
                 ((Activity) context).runOnUiThread(() -> {
-                    Toast.makeText(context, "đây roiiiiiiiii thua roiiiii", Toast.LENGTH_SHORT).show();
+                    showGameOverFragment();
+                    Toast.makeText(context, "Thua roi", Toast.LENGTH_SHORT).show();
                 });
             }
             if (enemyPlane.getPosY() < -1.0f) {
@@ -150,8 +149,22 @@ public class GameGLRenderer implements GLSurfaceView.Renderer {
             }
         }
 
+        if (enemyPlanes.size() == 0) {
+            ((Activity) context).runOnUiThread(() -> {
+                Toast.makeText(context, "Thang roi", Toast.LENGTH_SHORT).show();
+            });
+
+        }
 
     }
+    private void showGameOverFragment() {
+//        ((Activity) context).runOnUiThread(() -> {
+//            if (context instanceof PlayActivity) {
+//                ((PlayActivity) context).showGameOverFragment();
+//            }
+//        });
+    }
+
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {

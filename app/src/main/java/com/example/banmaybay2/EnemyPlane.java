@@ -65,9 +65,9 @@ public class EnemyPlane {
         GLES20.glEnableVertexAttribArray(positionHandle);
 
         float[] transformedCoords = {
-                posX, posY - 0.1f, 0.0f,
-                posX + 0.1f, posY + 0.1f, 0.0f,
-                posX - 0.1f, posY + 0.1f, 0.0f
+                posX, posY - 0.05f, 0.0f,
+                posX + 0.05f, posY + 0.05f, 0.0f,
+                posX - 0.05f, posY + 0.05f, 0.0f
         };
         vertexBuffer.put(transformedCoords).position(0);
 

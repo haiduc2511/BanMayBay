@@ -33,7 +33,7 @@ public class SharedPrefManager {
 
     public String getBulletsPerShot() {
         if (!contains("Bullets per shot")) {
-            return "5"; // Default value
+            return "7"; // Default value
         }
         return this.getData("Bullets per shot");
     }
@@ -77,6 +77,7 @@ public class SharedPrefManager {
 
     public String getBulletSpeed() {
         if (!contains("Bullet speed")) {
+
             return "1"; // Default value
         }
         return this.getData("Bullet speed");

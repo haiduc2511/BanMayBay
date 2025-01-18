@@ -30,29 +30,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initBottomNavigation() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, StoreFragment.newInstance()).commit();
-        binding.bnMain.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                if (R.id.nav_upgrade == id) {
-                    fragmentTransaction
-                            .replace(R.id.fragment_container, StoreFragment.newInstance())
-                            .commit();
-                }
-                if (R.id.nav_store == id) {
-                    fragmentTransaction
-                            .replace(R.id.fragment_container, UpgradeFragment.newInstance())
-                            .commit();
-                }
-                if (R.id.nav_play == id) {
-                }
-
-                return true;
-            }
-
-        });
+//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, StoreFragment.newInstance()).commit();
+//        binding.bnMain.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//                int id = menuItem.getItemId();
+//                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                if (R.id.nav_upgrade == id) {
+//                    fragmentTransaction
+//                            .replace(R.id.fragment_container, StoreFragment.newInstance())
+//                            .commit();
+//                }
+//                if (R.id.nav_store == id) {
+//                    fragmentTransaction
+//                            .replace(R.id.fragment_container, UpgradeFragment.newInstance())
+//                            .commit();
+//                }
+//                if (R.id.nav_play == id) {
+//                }
+//
+//                return true;
+//            }
+//
+//        });
 
         binding.fabPlay.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, PlayActivity.class);

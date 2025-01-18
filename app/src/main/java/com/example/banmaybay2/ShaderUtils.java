@@ -31,7 +31,6 @@ public class ShaderUtils {
         GLES20.glAttachShader(program, fragmentShader);
         GLES20.glLinkProgram(program);
 
-        // Kiểm tra lỗi liên kết program
         int[] linkStatus = new int[1];
         GLES20.glGetProgramiv(program, GLES20.GL_LINK_STATUS, linkStatus, 0);
         if (linkStatus[0] == 0) {
